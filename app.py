@@ -10,9 +10,11 @@ cert_model = pickle.load(open('cert_model.pkl', 'rb'))
 uni_model = pickle.load(open('uni_model.pkl', 'rb'))
 model = pickle.load(open('model.pkl', 'rb'))
 
+
 @app.route('/')
 def home():
     return render_template('index.html')
+
 
 @app.route('/predict',methods=['POST'])
 def predict():

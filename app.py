@@ -35,20 +35,9 @@ def predict():
     final_features = [np.array(int_features)]
     prediction5 = model.predict(final_features)
 
-#    output = round(prediction[0], 2)
-
     return render_template('index.html', prediction_text='Predicted Interested Subject : {}'.format(prediction[0]), prediction_text2='Predicted Workshop : {}'.format(prediction2[0]), prediction_text3='Predicted Certification : {}'.format(prediction3[0]), prediction_text4='Predicted University : {}'.format(prediction4[0]), prediction_text5='Predicted Career : {}'.format(prediction5[0]))
 
-@app.route('/predict_api',methods=['POST'])
-def predict_api():
-    '''
-    For direct API calls trought request
-    '''
-    data = request.get_json(force=True)
-    prediction = model.predict([np.array(list(data.values()))])
 
-    output = prediction[0]
-    return jsonify(output)
 
 if __name__ == "__main__":
     app.run(debug=True)

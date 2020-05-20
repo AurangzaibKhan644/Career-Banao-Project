@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Career Banao</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="experience" placeholder="Percentage at School" required="required" />
+        <input type="text" name="test_score" placeholder="Percentage at College" required="required" />
+		<input type="text" name="interview_score" placeholder="Hours Studing per day" required="required" />
+		<input type="text" name="experience2" placeholder="Master Degress?" required="required" />
+        <input type="text" name="test_score2" placeholder="Phd?" required="required" />
+		<input type="text" name="interview_score2" placeholder="Availed any Scholarship?" required="required" />
+		<input type="text" name="experience3" placeholder="Communication Skills" required="required" />
+        <input type="text" name="test_score3" placeholder="Public speaking Skills" required="required" />
+		<input type="text" name="interview_score3" placeholder="can work long time before system?" required="required" />
+		<input type="text" name="experience4" placeholder="self-learning capability?" required="required" />
+        <input type="text" name="test_score4" placeholder="Extra-courses did" required="required" />
+		<input type="text" name="interview_score4" placeholder="olympiads" required="required" />
+		<input type="text" name="experience5" placeholder="Reading and Writing Skills" required="required" />
+        <input type="text" name="test_score5" placeholder="interests" required="required" />
+		<input type="text" name="interview_score5" placeholder="Job/Higher Studies?" required="required" />
+		<input type="text" name="experience6" placeholder="Type of Company want to settle in?" required="required" />
+        <input type="text" name="test_score6" placeholder="interested in games" required="required" />
+		<input type="text" name="interview_score6" placeholder="Interested Type of Books" required="required" />
+		<input type="text" name="experience7" placeholder="Management or Technical" required="required" />
+        <input type="text" name="test_score7" placeholder="hard/smart worker" required="required" />
+		<input type="text" name="interview_score7" placeholder="worked in teams ever?" required="required" />
+		<input type="text" name="experience8" placeholder="Introvert" required="required" />
+        <input type="text" name="test_score8" placeholder="School Major" required="required" />
+		<input type="text" name="interview_score8" placeholder="Favorite Subject at School" required="required" />
+		<input type="text" name="experience9" placeholder="College Major" required="required" />
+        <input type="text" name="test_score9" placeholder="Favorite Subject at College" required="required" />
+		<input type="text" name="interview_score9" placeholder="Goals" required="required" />
+		<input type="text" name="experience10" placeholder="Skills" required="required" />
+        <input type="text" name="test_score10" placeholder="Hours working per day" required="required" />
+		<!-- <input type="text" name="interview_score10" placeholder="Interested Subjects" required="required" /> -->
+		<!-- <input type="text" name="experience11" placeholder="workshops" required="required" /> -->
+        <!-- <input type="text" name="test_score11" placeholder="certifications" required="required" /> -->
+		<!-- <input type="text" name="interview_score11" placeholder="Name of University" required="required" /> -->
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+   {{ prediction_text2 }}
+   {{ prediction_text3 }}
+   {{ prediction_text4 }}
+   {{ prediction_text5 }}
+
+ </div>
+
+
+</body>
+</html>

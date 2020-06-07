@@ -21,6 +21,8 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
+    
+    print("fuck you")
     int_features = [int(x) for x in request.form.values()] 
     final_features = [np.array(int_features)]
     prediction = int_sub_model.predict(final_features)
@@ -45,6 +47,7 @@ def predict_api():
     '''
     For direct API calls trought request
     '''
+    print("fuck you")
     data = request.get_json(force=True)
     prediction = int_sub_model.predict([np.array(list(data.values()))])
 

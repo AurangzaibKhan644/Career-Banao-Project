@@ -47,7 +47,8 @@ def predict_api():
     For direct API calls trought request
     '''
     data = request.get_json(force=True)
-    prediction = int_sub_model.predict([np.array(list(data.values()))])
+    int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    prediction = int_sub_model.predict([np.array(int_features)])
 
     output = prediction[0]
     return jsonify(output)

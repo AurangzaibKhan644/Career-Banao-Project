@@ -46,7 +46,7 @@ def predict_api():
     '''
     For direct API calls trought request
     '''
-    data = request.get_json(force=True)
+    #data = request.get_json(force=True)
     int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     prediction = int_sub_model.predict([np.array(int_features)])
 

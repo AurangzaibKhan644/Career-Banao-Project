@@ -51,7 +51,7 @@ def predict_api():
     prediction = int_sub_model.predict([np.array(int_features)])
 
     output = prediction[0]
-    return jsonify(title=output)
+    return jsonify(title=output, text=output)
 
 
 if __name__ == "__main__":

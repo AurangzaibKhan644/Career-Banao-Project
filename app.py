@@ -45,13 +45,22 @@ def predict():
 def predict_api():
     '''
     For direct API calls trought request
-    '''
+    '''   
     #data = request.get_json(force=True)
     int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    prediction = int_sub_model.predict([np.array(int_features)])
-
-    output = prediction[0]
-    return jsonify(title=output, text=output)
+    final_features = [np.array(int_features)]
+    prediction = int_sub_model.predict(final_features)
+    int_features.append(1)
+#     final_features = [np.array(int_features)]
+#     prediction2 = workshops_model.predict(final_features)
+    int_features.append(1)
+    final_features = [np.array(int_features)]
+    prediction3 = cert_model.predict(final_features)
+    int_features.append(1)
+    final_features = [np.array(int_features)]
+    prediction4 = uni_model.predict(final_features)
+#    output = prediction[0]
+    return jsonify(subject=prediction[0], certification=prediction3[0], university=prediction4[0])
 
 
 if __name__ == "__main__":

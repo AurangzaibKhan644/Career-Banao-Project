@@ -4,9 +4,10 @@ import pickle
 
 app = Flask(__name__)
 
+working_hours_model = pickle.load(open('working_hours_model.pkl', 'rb'))
 int_sub_model = pickle.load(open('int_sub_model.pkl', 'rb'))
 # workshops_model = pickle.load(open('workshops_model.pkl', 'rb'))
-cert_model = pickle.load(open('cert_model.pkl', 'rb'))
+cert_model = pickle.load(open('certification_model.pkl', 'rb'))
 uni_model = pickle.load(open('uni_model.pkl', 'rb'))
 # model = pickle.load(open('model.pkl', 'rb'))
 

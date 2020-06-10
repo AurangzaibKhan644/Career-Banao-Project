@@ -1,7 +1,7 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
-from sklearn.externals import joblib
+from sklearn import joblib
 
 app = Flask(__name__)
 

@@ -8,7 +8,7 @@ app = Flask(__name__)
  #working_hours_model = pickle.load(open('working_hours_model.pkl', 'rb'))
  #int_sub_model = pickle.load(open('int_sub_model.pkl', 'rb'))
 # workshops_model = pickle.load(open('workshops_model.pkl', 'rb'))
-cert_model = pickle.load(open('certification_model.pkl', 'rb'))
+cert_model = pickle.load(open('uni_model.pkl', 'rb'))
  #uni_model = pickle.load(open('uni_model.pkl', 'rb'))
 # model = pickle.load(open('model.pkl', 'rb'))
 
@@ -25,7 +25,7 @@ def predict():
     '''
 #    int_features = [int(x) for x in request.form.values()] 
     #int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    int_features = [1, 1, 1, 0, 0, 1, 2, 2, 0, 3, 0, 0, 1, 5, 0, 9, 1, 7, 0, 0, 1, 1, 0, 11, 5, 7, 42, 21, 4, 0, 0]
+    int_features = [1, 1, 1, 0, 0, 1, 2, 2, 0, 3, 0, 0, 1, 5, 0, 9, 1, 7, 0, 0, 1, 1, 0, 11, 5, 7, 42, 21, 4, 0, 0, 1]
     final_features = [np.array(int_features)]
     prediction = cert_model.predict(final_features)
     #final_features = [np.array(int_features)]

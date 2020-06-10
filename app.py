@@ -1,6 +1,7 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
+from sklearn.externals import joblib
 
 app = Flask(__name__)
 
@@ -8,6 +9,7 @@ app = Flask(__name__)
  #int_sub_model = pickle.load(open('int_sub_model.pkl', 'rb'))
 # workshops_model = pickle.load(open('workshops_model.pkl', 'rb'))
 cert_model = pickle.load(open('cert_model.pkl', 'rb'))
+cert_model = joblib.load('cert_model.joblib')
  #uni_model = pickle.load(open('uni_model.pkl', 'rb'))
 # model = pickle.load(open('model.pkl', 'rb'))
 

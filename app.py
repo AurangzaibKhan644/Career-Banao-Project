@@ -23,9 +23,13 @@ def predict():
     For rendering results on HTML GUI
     '''
 #    int_features = [int(x) for x in request.form.values()] 
-    int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     final_features = [np.array(int_features)]
-    prediction = int_sub_model.predict(final_features)
+    prediction = working_hours_model.predict(final_features)
+    
+    int_features.append(1)
+    final_features = [np.array(int_features)]
+    prediction2 = int_sub_model.predict(final_features)
     int_features.append(1)
 #     final_features = [np.array(int_features)]
 #     prediction2 = workshops_model.predict(final_features)
@@ -39,7 +43,7 @@ def predict():
 #     final_features = [np.array(int_features)]
 #     prediction5 = model.predict(final_features)
 
-    return render_template('index.html', prediction_text='Predicted Interested Subject : {}'.format(prediction[0]), prediction_text3='Predicted Certification : {}'.format(prediction3[0]), prediction_text4='Predicted University : {}'.format(prediction4[0]))
+    return render_template('index.html', prediction_text='Predicted Working Hours : {}'.format(prediction[0]), prediction_text2='Predicted Interested Subject : {}'.format(prediction2[0]), prediction_text3='Predicted Certification : {}'.format(prediction3[0]), prediction_text4='Predicted University : {}'.format(prediction4[0]))
 
 
 @app.route('/predict_api',methods=['POST'])

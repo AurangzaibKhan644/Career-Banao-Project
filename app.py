@@ -7,7 +7,7 @@ app = Flask(__name__)
 working_hours_model = pickle.load(open('working_hours_model.pkl', 'rb'))
 int_sub_model = pickle.load(open('int_sub_model.pkl', 'rb'))
 # workshops_model = pickle.load(open('workshops_model.pkl', 'rb'))
-cert_model = pickle.load(open('certification_model.pkl', 'rb'))
+# cert_model = pickle.load(open('certification_model.pkl', 'rb'))
 uni_model = pickle.load(open('uni_model.pkl', 'rb'))
 # model = pickle.load(open('model.pkl', 'rb'))
 
@@ -34,8 +34,8 @@ def predict():
 #     final_features = [np.array(int_features)]
 #     prediction2 = workshops_model.predict(final_features)
     int_features.append(1)
-    final_features = [np.array(int_features)]
-    prediction3 = cert_model.predict(final_features)
+#     final_features = [np.array(int_features)]
+#     prediction3 = cert_model.predict(final_features)
     int_features.append(1)
     final_features = [np.array(int_features)]
     prediction4 = uni_model.predict(final_features)
@@ -43,7 +43,7 @@ def predict():
 #     final_features = [np.array(int_features)]
 #     prediction5 = model.predict(final_features)
 
-    return render_template('index.html', prediction_text='Predicted Working Hours : {}'.format(prediction[0]), prediction_text2='Predicted Interested Subject : {}'.format(prediction2[0]), prediction_text3='Predicted Certification : {}'.format(prediction3[0]), prediction_text4='Predicted University : {}'.format(prediction4[0]))
+    return render_template('index.html', prediction_text='Predicted Working Hours : {}'.format(prediction[0]), prediction_text2='Predicted Interested Subject : {}'.format(prediction2[0]), prediction_text4='Predicted University : {}'.format(prediction4[0]))
 
 
 @app.route('/predict_api',methods=['POST'])

@@ -44,31 +44,30 @@ def predict():
 #     career = career_model.predict(final_features)
 
 #return render_template('index.html', working_hours='Predicted Working Hours : {}'.format(working_hours[0]), int_subject='Predicted Interested Subject : {}'.format(int_subject[0]), workshop='Predicted University : {}'.format(workshop[0]), certification='Predicted University : {}'.format(certification[0]), university='Predicted University : {}'.format(university[0]), career='Predicted University : {}'.format(career[0])
-    return render_template('index.html', working_hours='Predicted Working Hours : {}'.format(working_hours[0]), 
-                          int_subject='Predicted Interested Subjects : {}'.format(int_subject[0])
+    return render_template('index.html', working_hours='Predicted Working Hours : {}'.format(working_hours[0]), int_subject='Predicted Interested Subjects : {}'.format(int_subject[0]))
     
     
 
-@app.route('/predict_api',methods=['POST'])
-def predict_api():
-    '''
-    For direct API calls trought request
-    '''   
-    #data = request.get_json(force=True)
-    int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    final_features = [np.array(int_features)]
-    prediction = int_sub_model.predict(final_features)
-    int_features.append(1)
+# @app.route('/predict_api',methods=['POST'])
+# def predict_api():
+#     '''
+#     For direct API calls trought request
+#     '''   
+#     #data = request.get_json(force=True)
+#     int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 #     final_features = [np.array(int_features)]
-#     prediction2 = workshops_model.predict(final_features)
-    int_features.append(1)
-    final_features = [np.array(int_features)]
-    prediction3 = cert_model.predict(final_features)
-    int_features.append(1)
-    final_features = [np.array(int_features)]
-    prediction4 = uni_model.predict(final_features)
-#    output = prediction[0]
-    return jsonify(subject=prediction[0], certification=prediction3[0], university=prediction4[0])
+#     prediction = int_sub_model.predict(final_features)
+#     int_features.append(1)
+# #     final_features = [np.array(int_features)]
+# #     prediction2 = workshops_model.predict(final_features)
+#     int_features.append(1)
+#     final_features = [np.array(int_features)]
+#     prediction3 = cert_model.predict(final_features)
+#     int_features.append(1)
+#     final_features = [np.array(int_features)]
+#     prediction4 = uni_model.predict(final_features)
+# #    output = prediction[0]
+#     return jsonify(subject=prediction[0], certification=prediction3[0], university=prediction4[0])
 
 
 if __name__ == "__main__":

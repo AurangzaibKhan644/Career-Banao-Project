@@ -6,10 +6,10 @@ app = Flask(__name__)
 
 working_hours_model = pickle.load(open('working_hours_model.pkl', 'rb'))
 int_sub_model = pickle.load(open('int_sub_model.pkl', 'rb'))
-# workshops_model = pickle.load(open('workshop_model.pkl', 'rb'))
-# cert_model = pickle.load(open('certification_model.pkl', 'rb'))
-# uni_model = pickle.load(open('uni_model.pkl', 'rb'))
-# career_model = pickle.load(open('career_model.pkl', 'rb'))
+workshops_model = pickle.load(open('workshop_model.pkl', 'rb'))
+cert_model = pickle.load(open('certification_model.pkl', 'rb'))
+uni_model = pickle.load(open('uni_model.pkl', 'rb'))
+career_model = pickle.load(open('career_model.pkl', 'rb'))
 
 
 @app.route('/')
@@ -30,21 +30,21 @@ def predict():
     int_features.append(1)
     final_features = [np.array(int_features)]
     int_subject = int_sub_model.predict(final_features)
-#     int_features.append(1)
-#     final_features = [np.array(int_features)]
-#     workshop = workshops_model.predict(final_features)
-#     int_features.append(1)
-#     final_features = [np.array(int_features)]
-#     certification = cert_model.predict(final_features)
-#     int_features.append(1)
-#     final_features = [np.array(int_features)]
-#     university = uni_model.predict(final_features)
-#     int_features.append(1)
-#     final_features = [np.array(int_features)]
-#     career = career_model.predict(final_features)
+    int_features.append(1)
+    final_features = [np.array(int_features)]
+    workshop = workshops_model.predict(final_features)
+    int_features.append(1)
+    final_features = [np.array(int_features)]
+    certification = cert_model.predict(final_features)
+    int_features.append(1)
+    final_features = [np.array(int_features)]
+    university = uni_model.predict(final_features)
+    int_features.append(1)
+    final_features = [np.array(int_features)]
+    career = career_model.predict(final_features)
 
 #return render_template('index.html', working_hours='Predicted Working Hours : {}'.format(working_hours[0]), int_subject='Predicted Interested Subject : {}'.format(int_subject[0]), workshop='Predicted University : {}'.format(workshop[0]), certification='Predicted University : {}'.format(certification[0]), university='Predicted University : {}'.format(university[0]), career='Predicted University : {}'.format(career[0])
-    return render_template('index.html', working_hours='Predicted Working Hours : {}'.format(working_hours[0]), int_subject='Predicted Interested Subjects : {}'.format(int_subject[0]))
+    return render_template('index.html', working_hours='Predicted Working Hours : {}'.format(working_hours[0]), int_subject='Predicted Interested Subjects : {}'.format(int_subject[0]), workshop='Predicted Workshop : {}'.format(workshop[0]), certification='Predicted Certification : {}'.format(certification[0]), university='Predicted University : {}'.format(university[0]), career='Predicted University : {}'.format(career[0]))
     
     
 

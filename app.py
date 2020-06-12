@@ -48,26 +48,32 @@ def predict():
     
     
 
-# @app.route('/predict_api',methods=['POST'])
-# def predict_api():
-#     '''
-#     For direct API calls trought request
-#     '''   
+@app.route('/predict_api',methods=['POST'])
+def predict_api():
+    '''
+    For direct API calls trought request
+    '''   
 #     #data = request.get_json(force=True)
-#     int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-#     final_features = [np.array(int_features)]
-#     prediction = int_sub_model.predict(final_features)
-#     int_features.append(1)
-# #     final_features = [np.array(int_features)]
-# #     prediction2 = workshops_model.predict(final_features)
-#     int_features.append(1)
-#     final_features = [np.array(int_features)]
-#     prediction3 = cert_model.predict(final_features)
-#     int_features.append(1)
-#     final_features = [np.array(int_features)]
-#     prediction4 = uni_model.predict(final_features)
-# #    output = prediction[0]
-#     return jsonify(subject=prediction[0], certification=prediction3[0], university=prediction4[0])
+    int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    final_features = [np.array(int_features)]
+    working_hours = working_hours_model.predict(final_features)
+    int_features.append(1)
+    final_features = [np.array(int_features)]
+    int_subject = int_sub_model.predict(final_features)
+    int_features.append(1)
+    final_features = [np.array(int_features)]
+    workshop = workshops_model.predict(final_features)
+    int_features.append(1)
+    final_features = [np.array(int_features)]
+    certification = certification_model.predict(final_features)
+    int_features.append(1)
+    final_features = [np.array(int_features)]
+    university = uni_model.predict(final_features)
+    int_features.append(1)
+    final_features = [np.array(int_features)]
+    career = career_model.predict(final_features)
+    
+    return jsonify(working_hours=working_hours[0], interested_subject=int_subject[0], workshop=workshop[0], certification=certification[0], university=university[0], career=career[0])
 
 
 if __name__ == "__main__":

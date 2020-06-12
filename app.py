@@ -73,7 +73,7 @@ def predict_api():
     final_features = [np.array(int_features)]
     career = career_model.predict(final_features)
     
-    return jsonify(working_hours=working_hours[0], interested_subject=interested_subject[0], workshop=workshop[0], certification=certification[0], university=university[0], career=career[0])
+    return jsonify(interested_subject=interested_subject[0], workshop=workshop[0], certification=certification[0], university=university[0], career=career[0])
 
 
 if __name__ == "__main__":

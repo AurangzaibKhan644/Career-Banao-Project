@@ -59,7 +59,7 @@ def predict_api():
     working_hours = working_hours_model.predict(final_features)
     int_features.append(1)
     final_features = [np.array(int_features)]
-    int_subject = int_sub_model.predict(final_features)
+    interested_subject = int_sub_model.predict(final_features)
     int_features.append(1)
     final_features = [np.array(int_features)]
     workshop = workshops_model.predict(final_features)

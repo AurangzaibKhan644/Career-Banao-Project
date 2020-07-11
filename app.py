@@ -54,12 +54,12 @@ def predict_api():
     For direct API calls trought request
     '''   
     data = request.get_json(force=True)
-    working_hours = data.get('working_hours', '')
-    interested_subject = data.get('interested_subject', '')
-    workshop = data.get('workshop', '')
-    certification = data.get('certification', '')
-    university = data.get('university', '')
-    career = data.get('career', '')
+    working_hours = data['working_hours']
+    interested_subject = data['interested_subject']
+    workshop = data['workshop']
+    certification = data['certification']
+    university = data['university']
+    career = data['career']
     
 #     int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 #     final_features = [np.array(int_features)]
@@ -81,7 +81,7 @@ def predict_api():
 #     final_features = [np.array(int_features)]
 #     career = career_model.predict(final_features)
     
-    return jsonify(working_hours=working_hours, interested_subject=interested_subject[0], workshop=workshop[0], certification=certification[0], university=university[0], career=career[0])
+    return jsonify(working_hours=working_hours[0], interested_subject=interested_subject[0], workshop=workshop[0], certification=certification[0], university=university[0], career=career[0])
 
 
 if __name__ == "__main__":

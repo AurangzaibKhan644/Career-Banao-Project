@@ -53,26 +53,33 @@ def predict_api():
     '''
     For direct API calls trought request
     '''   
-#     #data = request.get_json(force=True)
-    int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-    final_features = [np.array(int_features)]
-    working_hour = working_hours_model.predict(final_features)
-    working_hours = int(working_hour[0])
-    int_features.append(1)
-    final_features = [np.array(int_features)]
-    interested_subject = int_sub_model.predict(final_features)
-    int_features.append(1)
-    final_features = [np.array(int_features)]
-    workshop = workshops_model.predict(final_features)
-    int_features.append(1)
-    final_features = [np.array(int_features)]
-    certification = certification_model.predict(final_features)
-    int_features.append(1)
-    final_features = [np.array(int_features)]
-    university = uni_model.predict(final_features)
-    int_features.append(1)
-    final_features = [np.array(int_features)]
-    career = career_model.predict(final_features)
+    data = request.get_json(force=True)
+    working_hours = data.get('working_hours', '')
+    interested_subject = data.get('interested_subject', '')
+    workshop = data.get('workshop', '')
+    certification = data.get('certification', '')
+    university = data.get('university', '')
+    career = data.get('career', '')
+    
+#     int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+#     final_features = [np.array(int_features)]
+#     working_hour = working_hours_model.predict(final_features)
+#     working_hours = int(working_hour[0])
+#     int_features.append(1)
+#     final_features = [np.array(int_features)]
+#     interested_subject = int_sub_model.predict(final_features)
+#     int_features.append(1)
+#     final_features = [np.array(int_features)]
+#     workshop = workshops_model.predict(final_features)
+#     int_features.append(1)
+#     final_features = [np.array(int_features)]
+#     certification = certification_model.predict(final_features)
+#     int_features.append(1)
+#     final_features = [np.array(int_features)]
+#     university = uni_model.predict(final_features)
+#     int_features.append(1)
+#     final_features = [np.array(int_features)]
+#     career = career_model.predict(final_features)
     
     return jsonify(working_hours=working_hours, interested_subject=interested_subject[0], workshop=workshop[0], certification=certification[0], university=university[0], career=career[0])
 

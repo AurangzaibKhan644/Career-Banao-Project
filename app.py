@@ -5,10 +5,10 @@ import pickle
 app = Flask(__name__)
 
 working_hours_model = pickle.load(open('working_hours_model.pkl', 'rb'))
-int_sub_model = pickle.load(open('int_sub_model.pkl', 'rb'))
-workshops_model = pickle.load(open('workshop_model.pkl', 'rb'))
+int_sub_model = pickle.load(open('interested_subject_model.pkl', 'rb'))
+workshops_model = pickle.load(open('workshops_model.pkl', 'rb'))
 certification_model = pickle.load(open('certifications_model.pkl', 'rb'))
-uni_model = pickle.load(open('uni_model.pkl', 'rb'))
+uni_model = pickle.load(open('university_model.pkl', 'rb'))
 career_model = pickle.load(open('career_model.pkl', 'rb'))
 
 
@@ -53,33 +53,33 @@ def predict_api():
     '''
     For direct API calls trought request
     '''   
-    data = request.get_json(force=True)
-    working_hours = data['working_hours']
-    interested_subject = data['interested_subject']
-    workshop = data['workshop']
-    certification = data['certification']
-    university = data['university']
-    career = data['career']
+#     data = request.get_json(force=True)
+#     working_hours = data['working_hours']
+#     interested_subject = data['interested_subject']
+#     workshop = data['workshop']
+#     certification = data['certification']
+#     university = data['university']
+#     career = data['career']
     
-#     int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-#     final_features = [np.array(int_features)]
-#     working_hour = working_hours_model.predict(final_features)
-#     working_hours = int(working_hour[0])
-#     int_features.append(1)
-#     final_features = [np.array(int_features)]
-#     interested_subject = int_sub_model.predict(final_features)
-#     int_features.append(1)
-#     final_features = [np.array(int_features)]
-#     workshop = workshops_model.predict(final_features)
-#     int_features.append(1)
-#     final_features = [np.array(int_features)]
-#     certification = certification_model.predict(final_features)
-#     int_features.append(1)
-#     final_features = [np.array(int_features)]
-#     university = uni_model.predict(final_features)
-#     int_features.append(1)
-#     final_features = [np.array(int_features)]
-#     career = career_model.predict(final_features)
+    int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    final_features = [np.array(int_features)]
+    working_hour = working_hours_model.predict(final_features)
+    working_hours = int(working_hour[0])
+    int_features.append(1)
+    final_features = [np.array(int_features)]
+    interested_subject = int_sub_model.predict(final_features)
+    int_features.append(1)
+    final_features = [np.array(int_features)]
+    workshop = workshops_model.predict(final_features)
+    int_features.append(1)
+    final_features = [np.array(int_features)]
+    certification = certification_model.predict(final_features)
+    int_features.append(1)
+    final_features = [np.array(int_features)]
+    university = uni_model.predict(final_features)
+    int_features.append(1)
+    final_features = [np.array(int_features)]
+    career = career_model.predict(final_features)
     
     return jsonify(working_hours=working_hours[0], interested_subject=interested_subject[0], workshop=workshop[0], certification=certification[0], university=university[0], career=career[0])
 

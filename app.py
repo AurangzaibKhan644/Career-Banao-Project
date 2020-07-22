@@ -23,7 +23,7 @@ def predict():
     For rendering results on HTML GUI
     '''
 #   int_features = [int(x) for x in request.form.values()] 
-    int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 #   int_features = [1, 1, 1, 0, 0, 1, 2, 2, 0, 3, 0, 0, 1, 5, 0, 9, 1, 7, 0, 0, 1, 1, 0, 11, 5, 7, 42, 21, 4, 0, 0, 1, 1]
     final_features = [np.array(int_features)]
     working_hours = working_hours_model.predict(final_features)
@@ -34,11 +34,14 @@ def predict():
     final_features = [np.array(int_features)]
     workshop = workshops_model.predict(final_features)
     int_features.append(1)
+    int_features.append(1)
     final_features = [np.array(int_features)]
     certification = certification_model.predict(final_features)
     int_features.append(1)
+    int_features.append(1)
     final_features = [np.array(int_features)]
     university = uni_model.predict(final_features)
+    int_features.append(1)
     int_features.append(1)
     final_features = [np.array(int_features)]
     career = career_model.predict(final_features)

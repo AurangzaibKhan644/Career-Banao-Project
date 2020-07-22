@@ -61,7 +61,7 @@ def predict_api():
 #     university = data['university']
 #     career = data['career']
     
-    int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     final_features = [np.array(int_features)]
     working_hour = working_hours_model.predict(final_features)
     working_hours = int(working_hour[0])
@@ -72,16 +72,19 @@ def predict_api():
     final_features = [np.array(int_features)]
     workshop = workshops_model.predict(final_features)
     int_features.append(1)
+    int_features.append(1)
     final_features = [np.array(int_features)]
     certification = certification_model.predict(final_features)
+    int_features.append(1)
     int_features.append(1)
     final_features = [np.array(int_features)]
     university = uni_model.predict(final_features)
     int_features.append(1)
+    int_features.append(1)
     final_features = [np.array(int_features)]
     career = career_model.predict(final_features)
     
-    return jsonify(working_hours=working_hours[0], interested_subject=interested_subject[0], workshop=workshop[0], certification=certification[0], university=university[0], career=career[0])
+    return jsonify(working_hours=working_hours, interested_subject=interested_subject[0], workshop=workshop[0], certification=certification[0], university=university[0], career=career[0])
 
 
 if __name__ == "__main__":

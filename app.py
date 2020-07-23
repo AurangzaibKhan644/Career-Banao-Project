@@ -7,9 +7,13 @@ app = Flask(__name__)
 working_hours_model = pickle.load(open('working_hours_model.pkl', 'rb'))
 int_sub_model = pickle.load(open('interested_subject_model.pkl', 'rb'))
 workshops_model = pickle.load(open('workshops_model.pkl', 'rb'))
+alt_workshops_model = pickle.load(open('alternate_workshops_model.pkl', 'rb'))
 certification_model = pickle.load(open('certifications_model.pkl', 'rb'))
+alt_certification_model = pickle.load(open('alternate_certifications_model.pkl', 'rb'))
 uni_model = pickle.load(open('university_model.pkl', 'rb'))
+alt_uni_model = pickle.load(open('alternate_university_model.pkl', 'rb'))
 career_model = pickle.load(open('career_model.pkl', 'rb'))
+course_model = pickle.load(open('course_model.pkl', 'rb'))
 
 
 @app.route('/')
@@ -75,19 +79,28 @@ def predict_api():
     final_features = [np.array(int_features)]
     workshop = workshops_model.predict(final_features)
     int_features.append(1)
+    final_features = [np.array(int_features)]
+    alt_workshop = alt_workshops_model.predict(final_features)
     int_features.append(1)
     final_features = [np.array(int_features)]
     certification = certification_model.predict(final_features)
     int_features.append(1)
+    final_features = [np.array(int_features)]
+    alt_certification = alt_certification_model.predict(final_features)
     int_features.append(1)
     final_features = [np.array(int_features)]
     university = uni_model.predict(final_features)
     int_features.append(1)
+    final_features = [np.array(int_features)]
+    alt_university = alt_uni_model.predict(final_features)
     int_features.append(1)
     final_features = [np.array(int_features)]
     career = career_model.predict(final_features)
+    int_features.append(1)
+    final_features = [np.array(int_features)]
+    course = course_model.predict(final_features)
     
-    return jsonify(working_hours=working_hours, interested_subject=interested_subject[0], workshop=workshop[0], certification=certification[0], university=university[0], career=career[0])
+    return jsonify(working_hours=working_hours, interested_subject=interested_subject[0], workshop=workshop[0], alt_workshop=alt_workshop[0], certification=certification[0], alt_certification=alt_certification[0], university=university[0], alt_university=alt_university[0], career=career[0], course=course[0])
 
 
 if __name__ == "__main__":

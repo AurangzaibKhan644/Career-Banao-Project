@@ -4,6 +4,7 @@ import pickle
 
 app = Flask(__name__)
 
+# Loading ML Models
 working_hours_model = pickle.load(open('working_hours_model.pkl', 'rb'))
 int_sub_model = pickle.load(open('interested_subject_model.pkl', 'rb'))
 workshops_model = pickle.load(open('workshops_model.pkl', 'rb'))
@@ -14,6 +15,17 @@ uni_model = pickle.load(open('university_model.pkl', 'rb'))
 alt_uni_model = pickle.load(open('alternate_university_model.pkl', 'rb'))
 career_model = pickle.load(open('career_model.pkl', 'rb'))
 course_model = pickle.load(open('course_model.pkl', 'rb'))
+
+# Loading transformed state of encoders
+working_hours_trans = pickle.load(open('working_hours.pkl', 'rb'))
+int_sub_trans = pickle.load(open('int_sub.pkl', 'rb'))
+workshop_trans = pickle.load(open('workshop.pkl', 'rb'))
+alt_workshop_trans = pickle.load(open('alt_workshop.pkl', 'rb'))
+cert_trans = pickle.load(open('cert.pkl', 'rb'))
+alt_cert_trans = pickle.load(open('alt_cert.pkl', 'rb'))
+uni_trans = pickle.load(open('uni.pkl', 'rb'))
+alt_uni_trans = pickle.load(open('alt_uni.pkl', 'rb'))
+job_role_trans = pickle.load(open('job_role.pkl', 'rb'))
 
 
 @app.route('/')
@@ -31,7 +43,8 @@ def predict():
 #   int_features = [1, 1, 1, 0, 0, 1, 2, 2, 0, 3, 0, 0, 1, 5, 0, 9, 1, 7, 0, 0, 1, 1, 0, 11, 5, 7, 42, 21, 4, 0, 0, 1, 1]
     final_features = [np.array(int_features)]
     working_hours = working_hours_model.predict(final_features)
-    int_features.append(1)
+    working_hours_encoded = working_hours_trans.transform(working_hours)
+    int_features.append(working_hours_encoded[0])
     final_features = [np.array(int_features)]
     int_subject = int_sub_model.predict(final_features)
     int_features.append(1)

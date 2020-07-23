@@ -85,7 +85,8 @@ def predict_api():
     final_features = [np.array(int_features)]
     working_hour = working_hours_model.predict(final_features)
     working_hours = int(working_hour[0])
-    int_features.append(1)
+    working_hours_encoded = working_hours_trans.transform(working_hour)
+    int_features.append(working_hours_encoded[0])
     final_features = [np.array(int_features)]
     interested_subject = int_sub_model.predict(final_features)
     int_features.append(1)

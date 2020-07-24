@@ -89,28 +89,36 @@ def predict_api():
     int_features.append(working_hours_encoded[0])
     final_features = [np.array(int_features)]
     interested_subject = int_sub_model.predict(final_features)
-    int_features.append(1)
+    int_sub_encoded = int_sub_trans.transform(interested_subject)
+    int_features.append(int_sub_encoded[0])
     final_features = [np.array(int_features)]
     workshop = workshops_model.predict(final_features)
-    int_features.append(1)
+    workshop_encoded = workshop_trans.transform(workshop)
+    int_features.append(workshop_encoded[0])
     final_features = [np.array(int_features)]
     alt_workshop = alt_workshops_model.predict(final_features)
-    int_features.append(1)
+    alt_workshop_encoded = alt_workshop_trans.transform(alt_workshop)
+    int_features.append(alt_workshop_encoded[0])
     final_features = [np.array(int_features)]
     certification = certification_model.predict(final_features)
-    int_features.append(1)
+    cert_encoded = cert_trans.transform(certification)
+    int_features.append(cert_encoded[0])
     final_features = [np.array(int_features)]
     alt_certification = alt_certification_model.predict(final_features)
-    int_features.append(1)
+    alt_cert_encoded = alt_cert_trans.transform(alt_certification)
+    int_features.append(alt_cert_encoded[0])
     final_features = [np.array(int_features)]
     university = uni_model.predict(final_features)
-    int_features.append(1)
+    uni_encoded = uni_trans.transform(university)
+    int_features.append(uni_encoded[0])
     final_features = [np.array(int_features)]
     alt_university = alt_uni_model.predict(final_features)
-    int_features.append(1)
+    alt_uni_encoded = alt_uni_trans.transform(alt_university)
+    int_features.append(alt_uni_encoded[0])
     final_features = [np.array(int_features)]
     career = career_model.predict(final_features)
-    int_features.append(1)
+    job_role_encoded = job_role_trans.transform(career)
+    int_features.append(job_role_encoded[0])
     final_features = [np.array(int_features)]
     course = course_model.predict(final_features)
     

@@ -81,7 +81,8 @@ def predict_api():
 #     university = data['university']
 #     career = data['career']
     
-    int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+#     int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    int_features = request.get_json(force=True)
     final_features = [np.array(int_features)]
     working_hour = working_hours_model.predict(final_features)
     working_hours = int(working_hour[0])

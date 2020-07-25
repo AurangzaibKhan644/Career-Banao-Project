@@ -125,5 +125,25 @@ def predict_api():
     return jsonify(working_hours=working_hours, interested_subject=interested_subject[0], workshop=workshop[0], alt_workshop=alt_workshop[0], certification=certification[0], alt_certification=alt_certification[0], university=university[0], alt_university=alt_university[0], career=career[0], course=course[0])
 
 
+@app.route('/predict_api_temp',methods=['GET', 'POST'])
+def predict_api_temp():
+    '''
+    For direct API calls trought request
+    '''   
+    data = request.get_json(force=True)
+    working_hours = data['working_hours']
+    interested_subject = data['interested_subject']
+    workshop = data['workshop']
+    alt_workshop = data['alt_workshop']
+    certification = data['certification']
+    alt_certification = data['alt_certification']
+    university = data['university']
+    alt_university = ['alt_university']
+    career = data['career']
+    course = data['course']
+    
+    return jsonify(working_hours=working_hours[0], interested_subject=interested_subject[0], workshop=workshop[0], alt_workshop=alt_workshop[0], certification=certification[0], alt_certification=alt_certification[0], university=university[0], alt_university=alt_university[0], career=career[0], course=course[0])
+
+
 if __name__ == "__main__":
     app.run(debug=True)

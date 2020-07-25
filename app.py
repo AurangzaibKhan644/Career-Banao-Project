@@ -138,11 +138,11 @@ def predict_api_temp():
     certification = data['certification']
     alt_certification = data['alt_certification']
     university = data['university']
-    alt_university = ['alt_university']
+    alt_university = data['alt_university']
     career = data['career']
     course = data['course']
     
-    return jsonify(working_hours=working_hours[0], interested_subject=interested_subject[0], workshop=workshop[0], alt_workshop=alt_workshop[0], certification=certification[0], alt_certification=alt_certification[0], university=university[0], alt_university=alt_university[0], career=career[0], course=course[0])
+    return jsonify(working_hours=working_hours, interested_subject=interested_subject, workshop=workshop, alt_workshop=alt_workshop, certification=certification, alt_certification=alt_certification, university=university, alt_university=alt_university, career=career, course=course)
 
 
 if __name__ == "__main__":

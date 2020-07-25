@@ -131,16 +131,16 @@ def predict_api_temp():
     For direct API calls trought request
     '''   
     data = request.get_json(force=True)
-    working_hours = data['working_hours']
-    interested_subject = data['interested_subject']
-    workshop = data['workshop']
-    alt_workshop = data['alt_workshop']
-    certification = data['certification']
-    alt_certification = data['alt_certification']
-    university = data['university']
-    alt_university = data['alt_university']
-    career = data['career']
-    course = data['course']
+    working_hours = data[0]
+    interested_subject = data[1]
+    workshop = data[1]
+    alt_workshop = data[2]
+    certification = data[1]
+    alt_certification = data[3]
+    university = data[4]
+    alt_university = data[5]
+    career = data[6]
+    course = data[7]
     
     return jsonify(working_hours=working_hours, interested_subject=interested_subject, workshop=workshop, alt_workshop=alt_workshop, certification=certification, alt_certification=alt_certification, university=university, alt_university=alt_university, career=career, course=course)
 

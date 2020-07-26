@@ -27,6 +27,16 @@ uni_trans = pickle.load(open('uni.pkl', 'rb'))
 alt_uni_trans = pickle.load(open('alt_uni.pkl', 'rb'))
 job_role_trans = pickle.load(open('job_role.pkl', 'rb'))
 
+# Loading Transformers 
+comm_skills_trans = pickle.load(open('comm_skills.pkl', 'rb'))
+speaking_skills_trans = pickle.load(open('speaking_skills.pkl', 'rb'))
+self_learning_trans = pickle.load(open('self_learning_skills.pkl', 'rb'))
+read_wri_skills_trans = pickle.load(open('read_wri_skills.pkl', 'rb'))
+fav_sub_sch_trans = pickle.load(open('fav_sub_sch.pkl', 'rb'))
+fav_sub_clg_trans = pickle.load(open('fav_sub_clg.pkl', 'rb'))
+skills_trans = pickle.load(open('skills.pkl', 'rb'))
+
+
 
 @app.route('/')
 def home():
@@ -83,6 +93,15 @@ def predict_api():
     
 #     int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     int_features = request.get_json(force=True)
+    
+    int_features[6] = comm_skills_trans.transform(int_features[6])
+    int_features[7] = speaking_skills_trans.transform(int_features[7])
+    int_features[9] = self_learning_trans.transform(int_features[9])
+    int_features[12] = read_wri_skills_trans.transform(int_features[12])
+    int_features[20] = fav_sub_sch_trans.transform(int_features[20])
+    int_features[22] = fav_sub_clg_trans.transform(int_features[22])
+    int_features[23] = skills_trans.transform(int_features[23])
+    
     final_features = [np.array(int_features)]
     working_hour = working_hours_model.predict(final_features)
     working_hours = int(working_hour[0])

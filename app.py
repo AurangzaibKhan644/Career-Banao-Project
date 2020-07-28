@@ -1,6 +1,7 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
+from sklearn.preprocessing import Normalizer
 
 app = Flask(__name__)
 
@@ -93,6 +94,13 @@ def predict_api():
     
 #     int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     int_features = request.get_json(force=True)
+    
+    data = [int_features[0], int_features[1], int_features[2]]
+    normalized_data = Normalizer().fit_transform([data])
+    
+    int_features[0] = normalized_data[0][0]
+    int_features[1] = normalized_data[0][1]
+    int_features[2] = normalized_data[0][2]
     
     temp = comm_skills_trans.transform([int_features[6]])
     int_features[6] = temp[0]

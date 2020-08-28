@@ -173,10 +173,17 @@ def predict_api():
     final_features = [np.array(int_features)]
     course = course_model.predict(final_features)
     
-    line = [1, 2, 3, 4, 5]
-    with open('checking.csv', 'a', newline='') as new_file:
-        csv_writer = csv.writer(new_file)
-        csv_writer.writerow(line)
+#     line = [1, 2, 3, 4, 5]
+#     with open('checking.csv', 'a', newline='') as new_file:
+#         csv_writer = csv.writer(new_file)
+#         csv_writer.writerow(line)
+
+    task_content = 'abcde'
+    new_task = Todo(content=task_content)
+    
+    db.session.add(new_task)
+    db.session.commit()
+     
     
     return jsonify(working_hours=working_hours, interested_subject=interested_subject[0], workshop=workshop[0], alt_workshop=alt_workshop[0], certification=certification[0], alt_certification=alt_certification[0], university=university[0], alt_university=alt_university[0], career=career[0], course=course[0])
 

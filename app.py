@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 from sklearn.preprocessing import Normalizer
 import csv
-# from flask_sqlalchemy import SQLAlchemy 
+from flask_sqlalchemy import SQLAlchemy 
 # from datetime import datetime
 
 

@@ -3,19 +3,19 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 from sklearn.preprocessing import Normalizer
 import csv
-from flask_sqlalchemy import SQLAlchemy 
-from datetime import datetime
+# from flask_sqlalchemy import SQLAlchemy 
+# from datetime import datetime
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-db = SQLAlchemy(app)
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+# db = SQLAlchemy(app)
 
 
-class Todo(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String(200), nullable=FALSE)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+# class Todo(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     content = db.Column(db.String(200), nullable=FALSE)
+#     date_created = db.Column(db.DateTime, default=datetime.utcnow)
     
 
 # Loading ML Models

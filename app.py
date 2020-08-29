@@ -15,15 +15,14 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://hhxuorrwhgeiza:a7f9ade28be46
 db = SQLAlchemy(app)
 
 
-class Todo(db.Model):
-    __tablename__ = 'todo'
+class Feedback(db.Model):
+    __tablename__ = 'feedback'
     id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String(200), nullable=True)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    customer = db.Column(db.String(200))
     
-    def __repr__(self):
-        return '<Task %r>' % self.id
-    
+    def __init__(self, customer):
+        self.customer = customer 
+
 
 # Loading ML Models
 working_hours_model = pickle.load(open('working_hours_model.pkl', 'rb'))
@@ -183,7 +182,7 @@ def predict_api():
 #         csv_writer.writerow(line)
 
     task_content = 'abcde'
-    new_task = Todo(content=task_content)
+    new_task = Feedback(customer=task_content)
     
     db.session.add(new_task)
     db.session.commit()

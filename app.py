@@ -9,8 +9,8 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-app.config['DATABASE_URL'] = 'postgres://hhxuorrwhgeiza:a7f9ade28be467c0735ac4f2071ee9b25444d319a59f424a3bcf6af69fe9229f@ec2-107-20-15-85.compute-1.amazonaws.com:5432/d6nueogb5lfg4h'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://hhxuorrwhgeiza:a7f9ade28be467c0735ac4f2071ee9b25444d319a59f424a3bcf6af69fe9229f@ec2-107-20-15-85.compute-1.amazonaws.com:5432/d6nueogb5lfg4h'
+# app.config['DATABASE_URL'] = 'postgres://hhxuorrwhgeiza:a7f9ade28be467c0735ac4f2071ee9b25444d319a59f424a3bcf6af69fe9229f@ec2-107-20-15-85.compute-1.amazonaws.com:5432/d6nueogb5lfg4h'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://hhxuorrwhgeiza:a7f9ade28be467c0735ac4f2071ee9b25444d319a59f424a3bcf6af69fe9229f@ec2-107-20-15-85.compute-1.amazonaws.com:5432/d6nueogb5lfg4h'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
 

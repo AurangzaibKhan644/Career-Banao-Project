@@ -20,6 +20,7 @@ class Feedback(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     customer = db.Column(db.String(200))
     dealer = db.Column(db.String(200))
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
     
     
     def __init__(self, customer, dealer):

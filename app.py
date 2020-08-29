@@ -19,11 +19,12 @@ class Feedback(db.Model):
     __tablename__ = 'feedback'
     id = db.Column(db.Integer, primary_key=True)
     customer = db.Column(db.String(200))
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    local_dt = db.Column(db.DateTime, default=datetime.utcnow)
     
     
-    def __init__(self, customer):
+    def __init__(self, customer, local_dt):
         self.customer = customer 
+        self.local_dt = local_dt
        
 
 
@@ -185,7 +186,8 @@ def predict_api():
 #         csv_writer.writerow(line)
 
     customer = 'abcde'
-    data = Feedback(customer)
+    local_dt = datetime.now()
+    data = Feedback(customer, local_dt)
     
     db.session.add(data)
     db.session.commit()

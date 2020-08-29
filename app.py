@@ -181,10 +181,10 @@ def predict_api():
 #         csv_writer = csv.writer(new_file)
 #         csv_writer.writerow(line)
 
-    task_content = 'abcde'
-    new_task = Feedback(customer=task_content)
+    customer = 'abcde'
+    data = Feedback(customer)
     
-    db.session.add(new_task)
+    db.session.add(data)
     db.session.commit()
      
     

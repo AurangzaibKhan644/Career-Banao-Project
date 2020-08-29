@@ -19,7 +19,7 @@ class Feedback(db.Model):
     __tablename__ = 'feedback'
     id = db.Column(db.Integer, primary_key=True)
     customer = db.Column(db.String(200))
-    local_dt = db.Column(db.DateTime, default=datetime.utcnow)
+    local_dt = db.Column(db.DateTime)
     
     
     def __init__(self, customer, local_dt):
@@ -118,6 +118,34 @@ def predict_api():
 #     int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     int_features = request.get_json(force=True)
     
+    # for server dataset
+    sch_percentage_db = int_features[0]
+    clg_percentage_db = int_features[1]
+    studying_hours_db = int_features[2]
+    extracurricular_activities_db = int_features[3]
+    competition_db = int_features[4]
+    scholarship_db = int_features[5]
+    communication_skills_db = int_features[6]
+    public_speaking_skills_db = int_features[7]
+    working_long_hours_db = int_features[8]
+    self_learning_capability_db = int_features[9]
+    extra_courses_db = int_features[10]
+    olympiad_db = int_features[11]
+    reading_writing_skills_db = int_features[12]
+    job_or_higher_studies_db = int_features[13]
+    sports_db = int_features[14]
+    technical_or_managerial_db = int_features[15]
+    hard_or_smart_worker_db = int_features[16]
+    teams_db = int_features[17]
+    introvert_db = int_features[18]
+    sch_major_db = int_features[19]
+    sch_fav_subject_db = int_features[20]
+    clg_major_db = int_features[21]
+    clg_fav_subject_db = int_features[22]
+    skillls_db = int_features[23]
+    
+    
+    
     data = [int_features[0], int_features[1], int_features[2]]
     normalized_data = Normalizer().fit_transform([data])
     
@@ -180,10 +208,17 @@ def predict_api():
     final_features = [np.array(int_features)]
     course = course_model.predict(final_features)
     
-#     line = [1, 2, 3, 4, 5]
-#     with open('checking.csv', 'a', newline='') as new_file:
-#         csv_writer = csv.writer(new_file)
-#         csv_writer.writerow(line)
+    # for server dataset
+    working_hours_db = working_hours 
+    interested_subject_db = interested_subject[0]
+    workshop_db = workshop[0]
+    alt_workshop_db = alt_workshop[0]
+    certification_db = certification[0]
+    alt_certification_db = alt_certification[0]
+    university_db = university[0]
+    alt_university_db = alt_university[0]
+    career_db = career[0]
+    course_db = course[0]
 
     customer = 'abcde'
     local_dt = datetime.now()

@@ -19,9 +19,12 @@ class Feedback(db.Model):
     __tablename__ = 'feedback'
     id = db.Column(db.Integer, primary_key=True)
     customer = db.Column(db.String(200))
+    dealer = db.Column(db.String(200))
     
-    def __init__(self, customer):
+    
+    def __init__(self, customer, dealer):
         self.customer = customer 
+        self.dealer = dealer
 
 
 # Loading ML Models
@@ -182,7 +185,8 @@ def predict_api():
 #         csv_writer.writerow(line)
 
     customer = 'abcde'
-    data = Feedback(customer)
+    dealer = 'bsdk'
+    data = Feedback(customer, dealer)
     
     db.session.add(data)
     db.session.commit()

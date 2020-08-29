@@ -11,3 +11,4 @@ matplotlib>=1.4.3
 pandas>=0.19
 xgboost>=0.90
 flask_sqlalchemy>=2.0
+psycopg2>=2.8.5

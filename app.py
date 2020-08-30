@@ -46,10 +46,63 @@ class Feedback(db.Model):
     clg_fav_subject = db.Column(db.String(100))
     skills = db.Column(db.String(100))
     
+    # double chotiya
+    working_hours = db.Column(db.String(100)) 
+    interested_subject = db.Column(db.String(100))
+    workshop = db.Column(db.String(100))
+    alt_workshop = db.Column(db.String(100))
+    certification = db.Column(db.String(100))
+    alt_certification = db.Column(db.String(100))
+    university = db.Column(db.String(100))
+    alt_university = db.Column(db.String(100))
+    career = db.Column(db.String(100))
+    course = db.Column(db.String(100))
     
-    def __init__(self, customer, local_dt):
-        self.customer = customer 
+    
+    def __init__(self, local_dt, sch_percentage, clg_percentage, studying_hours, extracurricular_activities, competition, 
+                scholarship, communication_skills, public_speaking_skills, working_long_hours, self_learning_capability, 
+                extra_courses, olympiad, reading_writing_skills, job_or_higher_studies, sports, technical_or_managerial, 
+                hard_or_smart_worker, teams, introvert, sch_major, sch_fav_subject, clg_major, clg_fav_subject, skills, 
+                working_hours, interested_subject, workshop, alt_workshop, certification, alt_certification, university, 
+                alt_university, career, course):
+        
         self.local_dt = local_dt
+        self.sch_percentage = sch_percentage
+        self.clg_percentage = clg_percentage
+        self.studying_hours = studying_hours
+        self.extracurricular_activities = extracurricular_activities
+        self.competition = competition
+        self.scholarship = scholarship
+        self.communication_skills = communication_skills
+        self.public_speaking_skills = public_speaking_skills
+        self.working_long_hours = working_long_hours
+        self.self_learning_capability = self_learning_capability
+        self.extra_courses = extra_courses
+        self.olympiad = olympiad
+        self.reading_writing_skills = reading_writing_skills
+        self.job_or_higher_studies = job_or_higher_studies
+        self.sports = sports
+        self.technical_or_managerial = technical_or_managerial
+        self.hard_or_smart_worker = hard_or_smart_worker
+        self.teams = teams
+        self.introvert = introvert
+        self.sch_major = sch_major
+        self.sch_fav_subject = sch_fav_subject
+        self.clg_major = clg_major
+        self.clg_fav_subject = clg_fav_subject
+        self.skills = skills
+        # extra chotyap
+        self.working_hours = working_hours
+        self.interested_subject = interested_subject
+        self.workshop = workshop
+        self.alt_workshop = alt_workshop
+        self.certification = certification
+        self.alt_certification = alt_certification
+        self.university = university
+        self.alt_university = alt_university
+        self.career = career
+        self.course = course
+        
        
 
 

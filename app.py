@@ -18,7 +18,6 @@ db = SQLAlchemy(app)
 class Feedback(db.Model):
     __tablename__ = 'feedback'
     id = db.Column(db.Integer, primary_key=True)
-    customer = db.Column(db.String(100))
     local_dt = db.Column(db.DateTime)
     
     # chotiya

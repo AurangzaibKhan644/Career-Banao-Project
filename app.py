@@ -9,9 +9,7 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-# app.config['DATABASE_URL'] = 'postgres://hhxuorrwhgeiza:a7f9ade28be467c0735ac4f2071ee9b25444d319a59f424a3bcf6af69fe9229f@ec2-107-20-15-85.compute-1.amazonaws.com:5432/d6nueogb5lfg4h'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://hhxuorrwhgeiza:a7f9ade28be467c0735ac4f2071ee9b25444d319a59f424a3bcf6af69fe9229f@ec2-107-20-15-85.compute-1.amazonaws.com:5432/d6nueogb5lfg4h'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -20,8 +18,7 @@ class Feedback(db.Model):
     __tablename__ = 'feedback'
     id = db.Column(db.Integer, primary_key=True)
     date_time = db.Column(db.DateTime)
-    
-    # chotiya
+   
     sch_percentage = db.Column(db.Integer)
     clg_percentage = db.Column(db.Integer)
     studying_hours = db.Column(db.Integer)
@@ -47,7 +44,6 @@ class Feedback(db.Model):
     clg_fav_subject = db.Column(db.String(100))
     skills = db.Column(db.String(100))
     
-    # double chotiya
     working_hours = db.Column(db.String(100)) 
     interested_subject = db.Column(db.String(100))
     workshop = db.Column(db.String(100))
@@ -87,7 +83,7 @@ class Feedback(db.Model):
         self.clg_major = clg_major
         self.clg_fav_subject = clg_fav_subject
         self.skills = skills
-        # extra chotyap
+  
         self.working_hours = working_hours
         self.interested_subject = interested_subject
         self.workshop = workshop
@@ -171,7 +167,6 @@ def predict():
     final_features = [np.array(int_features)]
     career = career_model.predict(final_features)
 
-#return render_template('index.html', working_hours='Predicted Working Hours : {}'.format(working_hours[0]), int_subject='Predicted Interested Subject : {}'.format(int_subject[0]), workshop='Predicted University : {}'.format(workshop[0]), certification='Predicted University : {}'.format(certification[0]), university='Predicted University : {}'.format(university[0]), career='Predicted University : {}'.format(career[0])
     return render_template('index.html', working_hours='Predicted Working Hours : {}'.format(working_hours[0]), int_subject='Predicted Interested Subjects : {}'.format(int_subject[0]), workshop='Predicted Workshop : {}'.format(workshop[0]), certification='Predicted Certification : {}'.format(certification[0]), university='Predicted University : {}'.format(university[0]), career='Predicted Career : {}'.format(career[0]))
     
     
@@ -181,15 +176,6 @@ def predict_api():
     '''
     For direct API calls trought request
     '''   
-#     data = request.get_json(force=True)
-#     working_hours = data['working_hours']
-#     interested_subject = data['interested_subject']
-#     workshop = data['workshop']
-#     certification = data['certification']
-#     university = data['university']
-#     career = data['career']
-    
-#     int_features = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     int_features = request.get_json(force=True)
     
     # for server dataset
@@ -298,36 +284,13 @@ def predict_api():
     course_db = course[0]
 
   
-    local_dt = datetime.now()
-    # this tatti
-    data = Feedback(local_dt, sch_percentage_db, clg_percentage_db, studying_hours_db, extracurricular_activities_db, competition_db, scholarship_db, communication_skills_db, public_speaking_skills_db, working_long_hours_db, self_learning_capability_db, extra_courses_db, olympiad_db, reading_writing_skills_db, job_or_higher_studies_db, sports_db, technical_or_managerial_db, hard_or_smart_worker_db, teams_db, introvert_db, sch_major_db, sch_fav_subject_db, clg_major_db, clg_fav_subject_db, skills_db, working_hours_db, interested_subject_db, workshop_db, alt_workshop_db, certification_db, alt_certification_db, university_db, alt_university_db, career_db, course_db)
-    
-    
+    local_dt = datetime.now()  
+    data = Feedback(local_dt, sch_percentage_db, clg_percentage_db, studying_hours_db, extracurricular_activities_db, competition_db, scholarship_db, communication_skills_db, public_speaking_skills_db, working_long_hours_db, self_learning_capability_db, extra_courses_db, olympiad_db, reading_writing_skills_db, job_or_higher_studies_db, sports_db, technical_or_managerial_db, hard_or_smart_worker_db, teams_db, introvert_db, sch_major_db, sch_fav_subject_db, clg_major_db, clg_fav_subject_db, skills_db, working_hours_db, interested_subject_db, workshop_db, alt_workshop_db, certification_db, alt_certification_db, university_db, alt_university_db, career_db, course_db)   
+ 
     db.session.add(data)
-    db.session.commit()
-     
+    db.session.commit()     
     
     return jsonify(working_hours=working_hours, interested_subject=interested_subject[0], workshop=workshop[0], alt_workshop=alt_workshop[0], certification=certification[0], alt_certification=alt_certification[0], university=university[0], alt_university=alt_university[0], career=career[0], course=course[0])
-
-
-@app.route('/predict_api_temp',methods=['GET', 'POST'])
-def predict_api_temp():
-    '''
-    For direct API calls trought request
-    '''   
-    data = request.get_json(force=True)
-    working_hours = data[6]
-    interested_subject = data[7]
-    workshop = data[9]
-    alt_workshop = data[12]
-    certification = data[20]
-    alt_certification = data[22]
-    university = data[23]
-    alt_university = data[6]
-    career = data[7]
-    course = data[9]
-    
-    return jsonify(working_hours=working_hours, interested_subject=interested_subject, workshop=workshop, alt_workshop=alt_workshop, certification=certification, alt_certification=alt_certification, university=university, alt_university=alt_university, career=career, course=course)
 
 
 if __name__ == "__main__":

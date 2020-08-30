@@ -18,7 +18,7 @@ db = SQLAlchemy(app)
 class Feedback(db.Model):
     __tablename__ = 'feedback'
     id = db.Column(db.Integer, primary_key=True)
-    local_dt = db.Column(db.DateTime)
+    date_time = db.Column(db.DateTime)
     
     # chotiya
     sch_percentage = db.Column(db.Integer)
@@ -59,9 +59,9 @@ class Feedback(db.Model):
     course = db.Column(db.String(100))
     
     
-    def __init__(self, local_dt, sch_percentage, clg_percentage, studying_hours, extracurricular_activities, competition, scholarship, communication_skills, public_speaking_skills, working_long_hours, self_learning_capability, extra_courses, olympiad, reading_writing_skills, job_or_higher_studies, sports, technical_or_managerial, hard_or_smart_worker, teams, introvert, sch_major, sch_fav_subject, clg_major, clg_fav_subject, skills, working_hours, interested_subject, workshop, alt_workshop, certification, alt_certification, university, alt_university, career, course):
+    def __init__(self, date_time, sch_percentage, clg_percentage, studying_hours, extracurricular_activities, competition, scholarship, communication_skills, public_speaking_skills, working_long_hours, self_learning_capability, extra_courses, olympiad, reading_writing_skills, job_or_higher_studies, sports, technical_or_managerial, hard_or_smart_worker, teams, introvert, sch_major, sch_fav_subject, clg_major, clg_fav_subject, skills, working_hours, interested_subject, workshop, alt_workshop, certification, alt_certification, university, alt_university, career, course):
         
-        self.local_dt = local_dt
+        self.date_time = date_time
         self.sch_percentage = sch_percentage
         self.clg_percentage = clg_percentage
         self.studying_hours = studying_hours

@@ -202,26 +202,29 @@ def predict_api():
     studying_hours_db = int_features[2]
     extracurricular_activities_db = int_features[3]
     competition_db = int_features[4]
+    
     scholarship_db = int_features[5]
     communication_skills_db = int_features[6]
     public_speaking_skills_db = int_features[7]
     working_long_hours_db = int_features[8]
     self_learning_capability_db = int_features[9]
+    
     extra_courses_db = int_features[10]
     olympiad_db = int_features[11]
     reading_writing_skills_db = int_features[12]
     job_or_higher_studies_db = int_features[13]
     sports_db = int_features[14]
+    
     technical_or_managerial_db = int_features[15]
     hard_or_smart_worker_db = int_features[16]
     teams_db = int_features[17]
     introvert_db = int_features[18]
     sch_major_db = int_features[19]
+    
     sch_fav_subject_db = int_features[20]
     clg_major_db = int_features[21]
     clg_fav_subject_db = int_features[22]
-    skills_db = int_features[23]
-    
+    skills_db = int_features[23]    
     
     
     data = [int_features[0], int_features[1], int_features[2]]
@@ -298,9 +301,18 @@ def predict_api():
     career_db = career[0]
     course_db = course[0]
 
-    customer = 'abcde'
+  
     local_dt = datetime.now()
-    data = Feedback(customer, local_dt)
+    # this tatti
+    
+     data = Feedback(local_dt, sch_percentage_db, clg_percentage_db, studying_hours_db, extracurricular_activities_db, competition_db, 
+                    scholarship_db, communication_skills_db, public_speaking_skills_db, working_long_hours_db, self_learning_capability_db, 
+                    extra_courses_db, olympiad_db, reading_writing_skills_db, job_or_higher_studies_db, sports_db, 
+                    technical_or_managerial_db, hard_or_smart_worker_db, teams_db, introvert_db, sch_major_db, 
+                    sch_fav_subject_db, clg_major_db, clg_fav_subject_db, skills_db, 
+                    working_hours_db, interested_subject_db, workshop_db, alt_workshop_db, certification_db,
+                    alt_certification_db, university_db, alt_university_db, career_db, course_db)
+    
     
     db.session.add(data)
     db.session.commit()

@@ -18,8 +18,34 @@ db = SQLAlchemy(app)
 class Feedback(db.Model):
     __tablename__ = 'feedback'
     id = db.Column(db.Integer, primary_key=True)
-    customer = db.Column(db.String(200))
+    customer = db.Column(db.String(100))
     local_dt = db.Column(db.DateTime)
+    
+    # chotiya
+    sch_percentage = db.Column(db.String(100))
+    clg_percentage = db.Column(db.String(100))
+    studying_hours = db.Column(db.String(100))
+    extracurricular_activities = db.Column(db.String(100))
+    competition = db.Column(db.String(100))
+    scholarship = db.Column(db.String(100))
+    communication_skills = db.Column(db.String(100))
+    public_speaking_skills = db.Column(db.String(100))
+    working_long_hours = db.Column(db.String(100))
+    self_learning_capability = db.Column(db.String(100))
+    extra_courses = db.Column(db.String(100))
+    olympiad = db.Column(db.String(100))
+    reading_writing_skills = db.Column(db.String(100))
+    job_or_higher_studies = db.Column(db.String(100))
+    sports = db.Column(db.String(100))
+    technical_or_managerial = db.Column(db.String(100))
+    hard_or_smart_worker = db.Column(db.String(100))
+    teams = db.Column(db.String(100))
+    introvert = db.Column(db.String(100))
+    sch_major = db.Column(db.String(100))
+    sch_fav_subject = db.Column(db.String(100))
+    clg_major = db.Column(db.String(100))
+    clg_fav_subject = db.Column(db.String(100))
+    skills = db.Column(db.String(100))
     
     
     def __init__(self, customer, local_dt):
@@ -142,7 +168,7 @@ def predict_api():
     sch_fav_subject_db = int_features[20]
     clg_major_db = int_features[21]
     clg_fav_subject_db = int_features[22]
-    skillls_db = int_features[23]
+    skills_db = int_features[23]
     
     
     

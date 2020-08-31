@@ -142,7 +142,7 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
-    data = request.form.
+    data = request.form
     int_features = list(data.values())
    
     # for server dataset

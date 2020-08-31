@@ -142,8 +142,8 @@ def predict():
     '''
     For rendering results on HTML GUI
     '''
-    data = request.form
-    int_features = list(data.values())
+    data = request.form.values()
+    int_features = list(data)
    
     # for server dataset
     sch_percentage_db = int_features[0]

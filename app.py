@@ -186,11 +186,11 @@ def predict():
     int_features[9] = temp[0]
     temp = read_wri_skills_trans.transform([int(int_features[12])])
     int_features[12] = temp[0]
-    temp = fav_sub_sch_trans.transform([int(int_features[20])])
+    temp = fav_sub_sch_trans.transform([int_features[20]])
     int_features[20] = temp[0]
-    temp = fav_sub_clg_trans.transform([int(int_features[22])])
+    temp = fav_sub_clg_trans.transform([int_features[22]])
     int_features[22] = temp[0]
-    temp = skills_trans.transform([int(int_features[23])])
+    temp = skills_trans.transform([int_features[23]])
     int_features[23] = temp[0]
     
     final_features = [np.array(int_features)]

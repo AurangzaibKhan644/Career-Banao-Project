@@ -178,7 +178,7 @@ def predict():
     int_features[1] = normalized_data[0][1]
     int_features[2] = normalized_data[0][2]
     
-    temp = comm_skills_trans.transform([int_features[6]])
+    temp = comm_skills_trans.transform([int(int_features[6])])
     int_features[6] = temp[0]
     temp = speaking_skills_trans.transform([int_features[7]])
     int_features[7] = temp[0]

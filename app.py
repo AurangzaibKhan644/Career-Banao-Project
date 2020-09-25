@@ -95,6 +95,24 @@ class Feedback(db.Model):
         self.career = career
         self.course = course
         
+        
+        
+# Report
+class Report(db.Model):
+    __tablename__ = 'report'
+    id = db.Column(db.Integer, primary_key=True)
+    date_time = db.Column(db.DateTime)
+   
+    email = db.Column(db.String(50))
+    message = db.Column(db.String(200))
+    
+    
+    def __init__(self, date_time, email, message):
+        
+        self.date_time = date_time
+        self.email = email
+        self.message = message
+        
        
 
 
@@ -375,6 +393,28 @@ def predict_api():
     db.session.commit()     
     
     return jsonify(working_hours=working_hours, interested_subject=interested_subject[0], workshop=workshop[0], alt_workshop=alt_workshop[0], certification=certification[0], alt_certification=alt_certification[0], university=university[0], alt_university=alt_university[0], career=career[0], course=course[0])
+
+
+# report api
+@app.route('/report_api',methods=['GET', 'POST'])
+def report_api():
+    '''
+    For direct API calls trought request
+    '''   
+    int_features = request.get_json(force=True)
+    
+    # for server dataset
+    email = int_features[0]
+    message = int_features[1]
+
+  
+    local_dt = datetime.now()  
+    data = Report(local_dt, email, message)   
+ 
+    db.session.add(data)
+    db.session.commit()     
+    
+    return jsonify(email=email, message=message)
 
 
 if __name__ == "__main__":
